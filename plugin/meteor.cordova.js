@@ -154,7 +154,7 @@ MeteorCordova = function(meteorUrl, options) {
   // Rig Options
   self.version = (options && options.version)?options.version: '';
   self.appcache = !!(options && options.appcache && options.appcache === true);
-  self.url = meteorUrl;
+  self.url = meteorUrl.replace(/\/+$/, "");
   self.onload = (options && options.onload)?options.onload: function() {};
   self.debug = !!(options && options.debug && options.debug === true);
   self.fallbackUrl = (options && options.fallbackUrl)?options.fallbackUrl: '';
@@ -473,6 +473,8 @@ MeteorCordova = function(meteorUrl, options) {
     if (event.origin === self.url) {
       // We have a connection
       self.connection(event && event.data);
+    } else {
+      throw new Error('Origins should match: ' + event.origin + ' === ' + self.url);
     }
   };
 

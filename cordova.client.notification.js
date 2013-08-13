@@ -77,7 +77,7 @@ Cordova.prototype.confirm = function(message, confirmCallback, title, buttonLabe
   if (self.plugins.notification || self.plugins.dialogs) {
     self.call('navigator.notification.confirm', [message, confirmCallback, title, buttonLabels]);
   } else {
-    confirmCallback( window.confirm(message)?1:0 );
+		confirmCallback( window.confirm(message)? 1 : 2 );
   }
 };
 
