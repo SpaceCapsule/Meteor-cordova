@@ -1,23 +1,35 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
   <title>Meteor Cordova Hello World</title>
 
+  <!-- Load in any and all CSS files here, presentation first -->
   <link rel="stylesheet" type="text/css" href="css/meteor.cordova.css">
 
-  <script charset="utf-8" type="text/javascript" src="cordova.js"></script>
-  <!--<script charset="utf-8" type="text/javascript" src="PushNotification.js"></script>-->
+  <!-- Load in the Cordova JS, version specific -->
+  <script charset="utf-8" type="text/javascript" src="cordova-2.4.0.js"></script>
 
-  <script charset="utf-8" type="text/javascript" src="meteor.cordova.js"></script>
+  <!-- Load any other JS needed to make your application function here -->
+  <!-- script charset="utf-8" type="text/javascript" src="js/my-phonegap-plugin-script.js"></script -->
+  <!-- script charset="utf-8" type="text/javascript" src="js/my-helper-scripts.js"></script -->
 
-  <!--<script charset="utf-8" type="text/javascript" src="meteor.cordova.push.js"></script>-->
+  <!-- Load in the Meteor-Cordova JS -->
+  <script charset="utf-8" type="text/javascript" src="js/meteor.cordova.js"></script>
 
+  <!-- Load in the Meteor-Cordova JS -->
   <script type="text/javascript">
+    // what version of this PhoneGap/Cordova App are you on?
+    // this is "your app's" version number.
+    // NOT the version number of the Meteor app.
     shellVersion = '0.0.1';
 
+    // We want to trigger when the device is ready
+    // (after all the Cordova JS has initialized)
     document.addEventListener('deviceready', function() {
 
+      // setup a new object to handle the Meteor interactions
       meteor = new MeteorCordova('http://meteor.com', {
         // This shell version
         version: '0.0.1',
@@ -25,20 +37,25 @@
         appcache: false
       });
 
+      // initialize/load Meteor
       meteor.load(function(error) {
         if (error) {
+          // error handling for loading Meteor
           alert('error: ' + error);
         }
       });
 
+      // optionally: you can send something to Meteor right away, at load time...
       // meteor.initPush({ senderID: 'xxxxxxxxxxx' });
-  
+
+      // any other application setup or plugin initialization code can go here...
     });
 
   </script>
 
 </head>
 <body>
-
+  <h1>Meteor Cordova Hello World</h1>
+  <p>Loading...</p>
 </body>
 </html>
