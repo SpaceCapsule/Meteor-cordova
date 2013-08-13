@@ -1,9 +1,9 @@
 Package.describe({
     summary: "\u001b[32mv0.0.6\n"+
-  		   "\u001b[33m-----------------------------------------\n"+
-  		   "\u001b[0m Adds basic support for Cordova/Phonegap  \n"+
-  		   "\u001b[0m shell communication in iframe            \n"+
-  		   "\u001b[33m-------------------------------------RaiX\n"
+      "\u001b[33m-----------------------------------------\n"+
+      "\u001b[0m Adds basic support for Cordova/Phonegap  \n"+
+      "\u001b[0m shell communication in iframe            \n"+
+      "\u001b[33m-------------------------------------RaiX\n"
 });
 
 Package.on_use(function (api) {
