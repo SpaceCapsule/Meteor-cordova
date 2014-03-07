@@ -174,6 +174,14 @@ MeteorCordova = function(iframeId, options) {
     }
   }
 
+
+  //helper to remove the path from an URI
+  self.removePath = function(uri) {
+    var a = document.createElement('a');
+    a.href = uri;
+    return a['protocol'] + '//' + a['host'];
+  };
+
   // We registrer the onload event - otherwise we just fail, can we catch error?
 
   self.send = function(message) {
@@ -374,7 +382,7 @@ MeteorCordova = function(iframeId, options) {
 
   self.messageEventHandler = function(event) {
     // If message is from meteor then
-    if (event.origin === self.url) {
+    if (event.origin === self.removePath(self.url)) {
       // We have a connection
       self.connection(event && event.data);
     } else {
