@@ -8,6 +8,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
+  api.use('deps','client');
   api.use('ejson', 'client');
 
   api.add_files('cordova.client.js', 'client');
