@@ -1,29 +1,38 @@
 Package.describe({
-    summary: "Adds basic support for Cordova/Phonegap\n"+
-         "\u001b[32mv0.0.8\n"+
-  		   "\u001b[33m-----------------------------------------\n"+
-  		   "\u001b[0m Adds basic support for Cordova/Phonegap  \n"+
-  		   "\u001b[0m shell communication in iframe            \n"+
-  		   "\u001b[33m-------------------------------------RaiX\n"
+  name: 'raix:cordova',
+  version: '0.2.1',
+  summary: 'Adds basic support for Cordova/Phonegap'
 });
 
-Package.on_use(function (api) {
-  api.use('ejson', 'client');
 
-  api.add_files('cordova.client.js', 'client');
-  api.add_files('cordova.client.notification.js', 'client');
-
-  api.export && api.export('Cordova', 'client');
-
+Cordova.depends({
+  'org.apache.cordova.dialogs': '0.2.10',
+  'org.apache.cordova.vibration': '0.3.11'
 });
 
-Package.on_test(function(api) {
-  api.use('cordova', ['client']);
-  api.use('test-helpers', 'client');
-  api.use(['tinytest', 'underscore', 'ejson', 'ordered-dict',
-           'random', 'deps']);
+Package.onUse(function (api) {
+  api.versionsFrom('1.0');
 
-  api.add_files([
+  api.use('reactive-var', 'client');
+  // The Meteor build solution
+  api.addFiles('cordova.client.js', 'web.cordova');
+  api.addFiles('cordova.client.notification.js', 'web.cordova');
+
+  // The iFrame solution
+  api.use('ejson', 'web.browser');
+  api.addFiles('web.client.js', 'web.browser');
+  api.addFiles('web.client.notification.js', 'web.browser');
+
+  api.export('Cordova', 'client');
+});
+
+Package.onTest(function(api) {
+    api.use('raix:cordova', ['client']);
+    api.use('test-helpers', 'client');
+    api.use(['tinytest', 'underscore', 'ejson', 'ordered-dict',
+             'random', 'tracker']);
+
+  api.addFiles([
     'plugin/meteor.cordova.js',
     'meteor.cordova.tests.js',
   ], 'client');
