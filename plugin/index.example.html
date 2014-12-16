@@ -1,44 +1,54 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
 <html>
 <head>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
-  <title>Meteor Cordova Hello World</title>
+  <title>Example of Meteor Cordova</title>
 
   <link rel="stylesheet" type="text/css" href="css/meteor.cordova.css">
 
   <script charset="utf-8" type="text/javascript" src="cordova.js"></script>
-  <!--<script charset="utf-8" type="text/javascript" src="PushNotification.js"></script>-->
+  <!-- <script charset="utf-8" type="text/javascript" src="PushNotification.js"></script> -->
 
   <script charset="utf-8" type="text/javascript" src="meteor.cordova.js"></script>
 
-  <!--<script charset="utf-8" type="text/javascript" src="meteor.cordova.push.js"></script>-->
+  <!-- <script charset="utf-8" type="text/javascript" src="meteor.cordova.push.js"></script> -->
 
-  <script type="text/javascript">
-    shellVersion = '0.0.1';
 
-    document.addEventListener('deviceready', function() {
-
-      meteor = new MeteorCordova('http://meteor.com', {
-        // This shell version
-        version: '0.0.1',
-        // Do we rely on appcache?
-        appcache: false
-      });
-
-      meteor.load(function(error) {
-        if (error) {
-          alert('error: ' + error);
-        }
-      });
-
-      // meteor.initPush({ senderID: 'xxxxxxxxxxx' });
-  
-    });
-
-  </script>
 
 </head>
 <body>
+  <iframe id="meteor" src="http://foo.meteor.com"></iframe>
+
+  <script type="text/javascript">
+  
+    shellVersion = '0.0.1'; // Set the shell version - this can b
+
+    meteor = new MeteorCordova('meteor'); // The iFrame id "meteor"
+
+    // meteor.initPush({ senderID: 'xxxxxxxxxxxxxxxx' });
+
+  </script>
+
 
 </body>
 </html>
