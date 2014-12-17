@@ -1,4 +1,5 @@
 Package.describe({
+  git: 'https://github.com/SpaceCapsule/Meteor-cordova.git',
   name: 'raix:cordova',
   version: '0.2.1',
   summary: 'Adds basic support for Cordova/Phonegap'
